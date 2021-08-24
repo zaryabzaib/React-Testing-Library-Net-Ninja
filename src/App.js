@@ -1,18 +1,14 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-import Banner from './components/Banner/Banner';
-import { Switch, Route } from "react-router-dom"
-import TodoPage from './pages/TodoPage/TodoPage';
-import FollowersPage from './pages/FollowersPage/FollowersPage';
 
 function App() {
+
+  const [buttonColor, setButtonColor] = useState('red');
+  const newButtonColor = buttonColor === "red" ? "blue" : "red"
+  
   return (
     <div className="App">
-      <Banner />
-      <Switch>
-        <Route strict exact path="/" component={TodoPage}/>
-        <Route strict exact path="/followers" component={FollowersPage}/>
-      </Switch>
+      <button style={{backgroundColor: buttonColor}} onClick={() => { setButtonColor(newButtonColor) }}>Change to {newButtonColor}</button>
     </div>
   );
 }
